@@ -27,12 +27,12 @@ export function AddSiteDialog({ onAdd }: { onAdd: () => void }) {
 
     const formData = new FormData(e.currentTarget)
     const data = {
-      url: formData.get("url"),
+      site: formData.get("url"),
       redirection: formData.get("redirection"),
     }
 
     try {
-      await fetch("/api/sites", {
+      await fetch("http://localhost:7000/api/site_bloquer", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(data),
@@ -74,7 +74,6 @@ export function AddSiteDialog({ onAdd }: { onAdd: () => void }) {
                 id="redirection"
                 name="redirection"
                 placeholder="warning.company.com"
-                required
                 className="bg-zinc-900 border-zinc-800"
               />
             </div>

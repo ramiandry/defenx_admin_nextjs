@@ -27,12 +27,12 @@ export function AddKeywordDialog({ onAdd }: { onAdd: () => void }) {
 
     const formData = new FormData(e.currentTarget)
     const data = {
-      keyword: formData.get("keyword"),
+      mot_cles: formData.get("keyword"),
       regex: formData.get("regex"),
     }
 
     try {
-      await fetch("/api/keywords", {
+      await fetch("http://localhost:7000/api/mot_cles", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(data),
@@ -74,7 +74,6 @@ export function AddKeywordDialog({ onAdd }: { onAdd: () => void }) {
                 id="regex"
                 name="regex"
                 placeholder="\b(virus|malware)\b"
-                required
                 className="bg-zinc-900 border-zinc-800 font-mono text-sm"
               />
             </div>
